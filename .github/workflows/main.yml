@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
+    - name: Checkout Repository
       uses: actions/checkout@v4
 
     - name: Set up Python 3.10
@@ -18,7 +18,7 @@ jobs:
       with:
         python-version: '3.10'
 
-    - name: Install dependencies
+    - name: Install System & Buildozer Dependencies
       run: |
         sudo apt-get update
         sudo apt-get install -y build-essential libsqlite3-dev sqlite3 bzip2 libbz2-dev libssl-dev openssl libffi-dev zlib1g-dev ccache libncurses5-dev libncursesw5-dev libreadline-dev libgdbm-dev libgdbm-compat-dev python3-dev liblzma-dev zip openjdk-17-jdk
@@ -29,8 +29,8 @@ jobs:
       run: |
         yes | buildozer -v android debug
 
-    - name: Upload APK
+    - name: Upload APK Artifact
       uses: actions/upload-artifact@v4
       with:
-        name: PhoneCameraApp-APK
+        name: CameraAI-Android-APK
         path: bin/*.apk
